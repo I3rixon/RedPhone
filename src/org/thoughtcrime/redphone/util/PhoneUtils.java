@@ -4,9 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 
 /**
- * Utilities related to device audio and call state
- *
- * Based on com.android.phone.PhoneUtils
+ * Utilities related to device audio and call state.
  *
  * @author Stuart O. Anderson
  */

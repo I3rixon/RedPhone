@@ -51,7 +51,6 @@ public class CallControls extends RelativeLayout {
   private InCallAudioButton audioButton;
   private InCallControlState controlState;
 
-
   private Handler handler = new Handler() {
     @Override
     public void handleMessage(Message message) {
@@ -176,7 +175,6 @@ public class CallControls extends RelativeLayout {
     controlState.update();
     audioButton.updateAudioButton(controlState);
   }
-
 
   public static interface HangupButtonListener {
     public void onClick();

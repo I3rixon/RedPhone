@@ -39,7 +39,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import org.spongycastle.crypto.tls.TlsAgreementCredentials;
 import org.thoughtcrime.redphone.codec.CodecSetupException;
 import org.thoughtcrime.redphone.contacts.PersonInfo;
 import org.thoughtcrime.redphone.directory.DirectoryUpdateReceiver;

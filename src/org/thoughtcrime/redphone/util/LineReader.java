@@ -67,9 +67,9 @@ public class LineReader {
     return -1;
   }
 
-  private final byte[] buffer = new byte[4096];
   public boolean waitForAvailable() throws IOException {
     try {
+      byte[] buffer = new byte[4096];
       int read      = in.read(buffer);
 
       if (read <= 0)

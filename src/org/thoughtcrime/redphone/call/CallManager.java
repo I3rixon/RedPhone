@@ -37,6 +37,7 @@ import org.thoughtcrime.redphone.crypto.zrtp.ZRTPSocket;
 import org.thoughtcrime.redphone.signaling.SessionDescriptor;
 import org.thoughtcrime.redphone.signaling.SignalingSocket;
 import org.thoughtcrime.redphone.ui.ApplicationPreferencesActivity;
+import org.thoughtcrime.redphone.util.AudioUtils;
 
 import java.io.IOException;
 import java.util.Date;
@@ -86,11 +87,12 @@ public abstract class CallManager extends Thread {
   public void run() {
     Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO);
 
+    AudioUtils.resetConfiguration(context);
+
     try {
       Log.d( "CallManager", "negotiating..." );
       if (!terminated) {
         callAudioManager = new CallAudioManager(secureSocket, CODEC_NAME, context);
-        callAudioManager.setMute(muteEnabled);
         zrtpSocket.negotiateStart();
       }
 
@@ -187,12 +189,5 @@ public abstract class CallManager extends Thread {
   public void doLoopback() throws AudioException, IOException {
     callAudioManager = new CallAudioManager( null, "SPEEX", context );
     callAudioManager.run();
-  }
-
-  public void setMute(boolean enabled) {
-    muteEnabled = enabled;
-    if(callAudioManager != null) {
-      callAudioManager.setMute(enabled);
-    }
   }
 }

@@ -33,7 +33,6 @@ import org.thoughtcrime.redphone.profiling.ProfilingTimer;
 import org.thoughtcrime.redphone.ui.ApplicationPreferencesActivity;
 import org.thoughtcrime.redphone.util.Factory;
 import org.thoughtcrime.redphone.util.Pool;
-import org.thoughtcrime.redphone.util.Util;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -78,7 +77,6 @@ public class MicrophoneReader {
   private PacketLogger packetLogger;
 
   private final AtomicReference<AudioException> micThreadException;
-  private final AtomicReference<Boolean> enableMute;
 
   private List<AudioChunk> micAudioList =
     Collections.synchronizedList(new ArrayList<AudioChunk>());
@@ -94,7 +92,6 @@ public class MicrophoneReader {
     this.packetLogger = packetLogger;
     audioQueue = outgoingAudio;
     micThreadException = new AtomicReference<AudioException>();
-    enableMute = new AtomicReference<Boolean>(false);
   }
 
   private void waitForMicReady() throws AudioException {
@@ -242,11 +239,6 @@ public class MicrophoneReader {
       chunk.sequenceNumber = sequenceNumber++;
 
       packetLogger.logPacket( chunk.sequenceNumber, PacketLogger.PACKET_IN_MIC_QUEUE );
-
-      if(enableMute.get()) {
-        muteAudio(chunk);
-      }
-
       micAudioList.add( chunk );
 
       if (samplesRead != AudioCodec.SAMPLES_PER_FRAME) {
@@ -268,13 +260,5 @@ public class MicrophoneReader {
 
   public void flush() {
     micAudioList.clear();
-  }
-
-  public void setMute(boolean updatedMuteSetting) {
-    enableMute.set(updatedMuteSetting);
-  }
-
-  public void muteAudio(AudioChunk chunk) {
-    Arrays.fill(chunk.getChunk(), (short) 0);
   }
 }

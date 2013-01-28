@@ -141,30 +141,11 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
     else if (intent.getAction().equals(ACTION_ANSWER_CALL))               handleAnswerCall(intent);
     else if (intent.getAction().equals(ACTION_DENY_CALL))                 handleDenyCall(intent);
     else if (intent.getAction().equals(ACTION_HANGUP_CALL))               handleHangupCall(intent);
-    else if (intent.getAction().equals(ACTION_SET_MUTE))                  handleSetMute(intent);
   }
 
   ///// Initializers
 
   private void initializeAudio() {
-    AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
-
-    if (ApplicationPreferencesActivity.getAudioModeIncall(this)) {
-      try {
-        am.setMode(AudioManager.MODE_IN_CALL);
-      } catch (SecurityException e) {
-        Log.d(TAG, "Can't use in-call audio mode due to missing permissions.  Falling back to mode-normal.", e);
-        am.setMode(AudioManager.MODE_NORMAL);
-      }
-    }
-    else {
-      am.setMode(AudioManager.MODE_NORMAL);
-    }
-
-    am.setSpeakerphoneOn(false);
-    am.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-                       am.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL), 0);
-    //TODO(Stuart Anderson): I suspect we can safely remove everything before this line...
     this.outgoingRinger = new OutgoingRinger(this);
     this.incomingRinger = new IncomingRinger(this);
   }
@@ -597,13 +578,6 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
     public void uncaughtException(Thread thread, Throwable throwable) {
       Log.d(TAG, "Uncaught exception - releasing proximity lock", throwable);
       lockManager.updatePhoneState(LockManager.PhoneState.IDLE);
-    }
-  }
-
-  public void handleSetMute(Intent intent) {
-    if(currentCallManager != null) {
-      boolean enabled = intent.getBooleanExtra(Constants.MUTE_VALUE, false);
-      currentCallManager.setMute(enabled);
     }
   }
 }

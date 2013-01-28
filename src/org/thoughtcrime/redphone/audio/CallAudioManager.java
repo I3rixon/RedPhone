@@ -207,8 +207,4 @@ public class CallAudioManager {
     }
     if( callTerm ) doTerminate();
   }
-
-  public void setMute(boolean enabled) {
-    micReader.setMute(enabled);
-  }
 }

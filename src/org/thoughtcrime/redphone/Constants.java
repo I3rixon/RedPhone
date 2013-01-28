@@ -34,5 +34,4 @@ public interface Constants {
   public static final String PASSWORD_PREFERENCE         = "Password";
   public static final String KEY_PREFERENCE              = "Key";
   public static final String PASSWORD_COUNTER_PREFERENCE = "PasswordCounter";
-  public static final String MUTE_VALUE                  = "MuteValue";
 }

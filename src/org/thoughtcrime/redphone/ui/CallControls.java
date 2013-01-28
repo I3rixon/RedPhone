@@ -48,7 +48,8 @@ public class CallControls extends RelativeLayout {
   private MultiWaveView incomingCallWidget;
 
   private CompoundButton muteButton;
-  private CompoundButton audioButton;
+  private InCallAudioButton audioButton;
+  private InCallControlState controlState;
 
 
   private Handler handler = new Handler() {
@@ -90,12 +91,14 @@ public class CallControls extends RelativeLayout {
     incomingCallWidget.setVisibility(View.VISIBLE);
 
     handler.sendEmptyMessageDelayed(0, 500);
+    updateControls();
   }
 
   public void setActiveCall() {
     incomingCallWidget.setVisibility(View.GONE);
     activeCallWidget.setVisibility(View.VISIBLE);
     sasTextView.setVisibility(View.GONE);
+    updateControls();
   }
 
   public void setActiveCall(String sas) {
@@ -108,6 +111,7 @@ public class CallControls extends RelativeLayout {
     incomingCallWidget.setVisibility(View.GONE);
     activeCallWidget.setVisibility(View.GONE);
     sasTextView.setText("");
+    updateControls();
   }
 
   public void setHangupButtonListener(final HangupButtonListener listener) {
@@ -128,7 +132,8 @@ public class CallControls extends RelativeLayout {
     });
   }
 
-  public void setAudioButtonListener(final AudioButtonListener listener) {
+  public void setAudioButtonListener(final InCallAudioButton.AudioButtonListener listener) {
+    audioButton.setListener(listener);
   }
 
 
@@ -160,8 +165,18 @@ public class CallControls extends RelativeLayout {
     this.activeCallWidget   = (View)findViewById(R.id.inCallControls);
     this.sasTextView        = (TextView)findViewById(R.id.sas);
     this.muteButton         = (CompoundButton)findViewById(R.id.muteButton);
-    this.audioButton        = (CompoundButton)findViewById(R.id.audioButton);
+    this.audioButton        = new InCallAudioButton((CompoundButton)findViewById(R.id.audioButton));
+
+    controlState = new InCallControlState(getContext());
+
+    updateControls();
   }
+
+  public void updateControls() {
+    controlState.update();
+    audioButton.updateAudioButton(controlState);
+  }
+
 
   public static interface HangupButtonListener {
     public void onClick();
@@ -169,16 +184,6 @@ public class CallControls extends RelativeLayout {
 
   public static interface MuteButtonListener {
     public void onToggle(boolean isMuted);
-  }
-
-  public static enum AudioMode {
-    DEFAULT,
-    HEADSET,
-    SPEAKER,
-  }
-
-  public static interface AudioButtonListener {
-    public void onAudioChange(AudioMode mode);
   }
 
   public static interface IncomingCallActionListener {

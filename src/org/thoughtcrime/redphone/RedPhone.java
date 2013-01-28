@@ -164,9 +164,12 @@ public class RedPhone extends Activity {
 
     callScreen.setHangupButtonListener(new HangupButtonListener());
     callScreen.setIncomingCallActionListener(new IncomingCallActionListener());
+    callScreen.setMuteButtonListener(new MuteButtonListener());
 
     DirectoryUpdateReceiver.scheduleDirectoryUpdate(this);
   }
+
+
 
   private void sendInstallLink(String user) {
     String message =
@@ -175,6 +178,13 @@ public class RedPhone extends Activity {
 
     ArrayList<String> messages = SmsManager.getDefault().divideMessage(message);
     SmsManager.getDefault().sendMultipartTextMessage(user, null, messages, null, null);
+  }
+
+  private void handleSetMute(boolean enabled) {
+    Intent intent = new Intent(this, RedPhoneService.class);
+    intent.setAction(RedPhoneService.ACTION_SET_MUTE);
+    intent.putExtra(Constants.MUTE_VALUE, enabled);
+    startService(intent);
   }
 
   private void handleAnswerCall() {
@@ -407,6 +417,13 @@ public class RedPhone extends Activity {
       startService(intent);
 
       RedPhone.this.handleTerminate( LOCAL_TERMINATE );
+    }
+  }
+
+  private class MuteButtonListener implements CallControls.MuteButtonListener {
+    @Override
+    public void onToggle(boolean isMuted) {
+      RedPhone.this.handleSetMute(isMuted);
     }
   }
 

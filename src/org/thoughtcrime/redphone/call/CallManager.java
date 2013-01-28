@@ -62,6 +62,7 @@ public abstract class CallManager extends Thread {
   private CallAudioManager callAudioManager;
   private SignalManager signalManager;
   private String sas;
+  private boolean muteEnabled;
 
   protected SessionDescriptor sessionDescriptor;
   protected ZRTPSocket zrtpSocket;
@@ -89,6 +90,7 @@ public abstract class CallManager extends Thread {
       Log.d( "CallManager", "negotiating..." );
       if (!terminated) {
         callAudioManager = new CallAudioManager(secureSocket, CODEC_NAME, context);
+        callAudioManager.setMute(muteEnabled);
         zrtpSocket.negotiateStart();
       }
 
@@ -185,5 +187,12 @@ public abstract class CallManager extends Thread {
   public void doLoopback() throws AudioException, IOException {
     callAudioManager = new CallAudioManager( null, "SPEEX", context );
     callAudioManager.run();
+  }
+
+  public void setMute(boolean enabled) {
+    muteEnabled = enabled;
+    if(callAudioManager != null) {
+      callAudioManager.setMute(enabled);
+    }
   }
 }

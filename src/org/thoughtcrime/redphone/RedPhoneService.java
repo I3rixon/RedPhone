@@ -73,6 +73,7 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
   public static final String ACTION_ANSWER_CALL   = "org.thoughtcrime.redphone.RedPhoneService.ANSWER_CALL";
   public static final String ACTION_DENY_CALL     = "org.thoughtcrime.redphone.RedPhoneService.DENYU_CALL";
   public static final String ACTION_HANGUP_CALL   = "org.thoughtcrime.redphone.RedPhoneService.HANGUP";
+  public static final String ACTION_SET_MUTE      = "org.thoughtcrime.redphone.RedPhoneService.SET_MUTE";
 
   private static final String TAG = RedPhoneService.class.getName();
 
@@ -140,6 +141,7 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
     else if (intent.getAction().equals(ACTION_ANSWER_CALL))               handleAnswerCall(intent);
     else if (intent.getAction().equals(ACTION_DENY_CALL))                 handleDenyCall(intent);
     else if (intent.getAction().equals(ACTION_HANGUP_CALL))               handleHangupCall(intent);
+    else if (intent.getAction().equals(ACTION_SET_MUTE))                  handleSetMute(intent);
   }
 
   ///// Initializers
@@ -595,6 +597,13 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
     public void uncaughtException(Thread thread, Throwable throwable) {
       Log.d(TAG, "Uncaught exception - releasing proximity lock", throwable);
       lockManager.updatePhoneState(LockManager.PhoneState.IDLE);
+    }
+  }
+
+  public void handleSetMute(Intent intent) {
+    if(currentCallManager != null) {
+      boolean enabled = intent.getBooleanExtra(Constants.MUTE_VALUE, false);
+      currentCallManager.setMute(enabled);
     }
   }
 }

@@ -80,6 +80,10 @@ public class CallScreen extends FrameLayout {
     callControls.setIncomingCallActionListener(listener);
   }
 
+  public void setMuteButtonListener(CallControls.MuteButtonListener listener) {
+    callControls.setMuteButtonListener(listener);
+  }
+
   private void initialize() {
     LayoutInflater inflater = (LayoutInflater)getContext()
                               .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

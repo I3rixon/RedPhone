@@ -39,7 +39,6 @@ public class InCallControlState {
   public boolean speakerOn;
   //
   public boolean canMute;
-  public boolean muteIndicatorOn;
 
   public InCallControlState(Context cm) {
     if (DBG) log("InCallControlState constructor...");
@@ -69,7 +68,6 @@ public class InCallControlState {
 
     // Mute is also always enabled
     canMute = true;
-    muteIndicatorOn = PhoneUtils.getMute(context);
     if (DBG) dumpState();
   }
 
@@ -81,7 +79,6 @@ public class InCallControlState {
     log("  speakerEnabled: " + speakerEnabled);
     log("  speakerOn: " + speakerOn);
     log("  canMute: " + canMute);
-    log("  muteIndicatorOn: " + muteIndicatorOn);
   }
 
   private void log(String msg) {

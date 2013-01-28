@@ -141,6 +141,7 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
     else if (intent.getAction().equals(ACTION_ANSWER_CALL))               handleAnswerCall(intent);
     else if (intent.getAction().equals(ACTION_DENY_CALL))                 handleDenyCall(intent);
     else if (intent.getAction().equals(ACTION_HANGUP_CALL))               handleHangupCall(intent);
+    else if (intent.getAction().equals(ACTION_SET_MUTE))                  handleSetMute(intent);
   }
 
   ///// Initializers
@@ -254,6 +255,13 @@ public class RedPhoneService extends Service implements CallStateListener, CallS
 
   private void handleHangupCall(Intent intent) {
     this.terminate();
+  }
+
+  private void handleSetMute(Intent intent) {
+    if(currentCallManager != null) {
+      currentCallManager.setMute(intent.getBooleanExtra(Constants.MUTE_VALUE, false));
+
+    }
   }
 
   /// Helper Methods

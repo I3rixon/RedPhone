@@ -39,6 +39,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import org.spongycastle.crypto.tls.TlsAgreementCredentials;
 import org.thoughtcrime.redphone.codec.CodecSetupException;
 import org.thoughtcrime.redphone.contacts.PersonInfo;
 import org.thoughtcrime.redphone.directory.DirectoryUpdateReceiver;
@@ -172,8 +173,6 @@ public class RedPhone extends Activity {
     DirectoryUpdateReceiver.scheduleDirectoryUpdate(this);
   }
 
-
-
   private void sendInstallLink(String user) {
     String message =
         String.format(getString(R.string.RedPhone_id_like_to_call_you_securely_using_redphone_you_can_install_redphone_from_the_play_store_s),
@@ -184,8 +183,10 @@ public class RedPhone extends Activity {
   }
 
   private void handleSetMute(boolean enabled) {
-    AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-    am.setMicrophoneMute(enabled);
+    Intent intent = new Intent(this, RedPhoneService.class);
+    intent.setAction(RedPhoneService.ACTION_SET_MUTE);
+    intent.putExtra(Constants.MUTE_VALUE, enabled);
+    startService(intent);
   }
 
   private void handleAnswerCall() {

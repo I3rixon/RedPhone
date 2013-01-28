@@ -12,14 +12,14 @@ public class AudioUtils {
   public static void enableDefaultRouting(Context context) {
     AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     am.setSpeakerphoneOn(false);
-    Log.d(TAG, "Set default audio routing");
+    Log.d(TAG, "Set default audio routing", new Exception());
 
   }
 
   public static void enableSpeakerphoneRouting(Context context) {
     AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     am.setSpeakerphoneOn(true);
-    Log.d(TAG, "Set speakerphone audio routing");
+    Log.d(TAG, "Set speakerphone audio routing", new Exception());
   }
 
   public static void resetConfiguration(Context context) {

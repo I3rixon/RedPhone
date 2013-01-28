@@ -66,7 +66,8 @@ public class RobustAudioTrack  {
     if(Build.VERSION.SDK_INT >= 11) {
       am.setMode(AudioManager.MODE_IN_COMMUNICATION);
     } else {
-      am.setMode(AudioManager.MODE_IN_CALL);
+      Log.d(TAG, "Setting Normal Audio mode");
+      am.setMode(AudioManager.MODE_NORMAL);
     }
 
     audioPlayer = new AudioTrack(AudioManager.STREAM_VOICE_CALL,

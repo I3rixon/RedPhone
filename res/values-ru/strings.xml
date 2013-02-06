@@ -29,22 +29,22 @@
 
     <string name="MicrophoneReader_microphone_failed_to_initialize_try_changing_audio_call_mode_in_settings">Проблемы с микрофоном.  Попробовать изменить аудио настройки?</string>
 
-    <string name="RobustAudioTrack_audiotrack_did_not_initialize">AudioTrack did not initialize</string>
+    <string name="RobustAudioTrack_audiotrack_did_not_initialize">Аудиодорожка не инициализирована</string>
 
     <string name="AboutActivity_about_redphone">Про RedPhone</string>
     <string name="AboutActivity_redphone_beta_s">RedPhone Beta %s</string>
 
     <string name="ApplicationPreferencesActivity_redphone_settings">Настройки RedPhone</string>
-    <string name="ApplicationPreferencesActivity_updating_signaling_method">Updating Signaling Method</string>
-    <string name="ApplicationPreferencesActivity_changing_signaling_method_this_could_take_a_second">Changing signaling method, this could take a second...</string>
-    <string name="ApplicationPreferencesActivity_error_registering_with_c2dm_server">Error registering with C2DM server...</string>
-    <string name="ApplicationPreferencesActivity_error_unregistering_with_c2dm_server">Error unregistering with C2DM server...</string>
-    <string name="ApplicationPreferencesActivity_error_communicating_with_c2dm_server">Error communicating with C2DM server...</string>
+    <string name="ApplicationPreferencesActivity_updating_signaling_method">Обновление метода уведомлений</string>
+    <string name="ApplicationPreferencesActivity_changing_signaling_method_this_could_take_a_second">Изменение метода уведомлений, это может зантья несколько секунд...</string>
+    <string name="ApplicationPreferencesActivity_error_registering_with_c2dm_server">Ошибка регистрации C2DM сервера...</string>
+    <string name="ApplicationPreferencesActivity_error_unregistering_with_c2dm_server">Ошибка отмены регистрации в C2DM сервере...</string>
+    <string name="ApplicationPreferencesActivity_error_communicating_with_c2dm_server">Ошибка соединения с C2DM серверов...</string>
     
     <string name="CallScreen_incoming_call">Входящий вызов...</string>
 
-    <string name="CreateAccountActivity_register_with_redphone">Register with RedPhone</string>
-    <string name="CreateAccountActivity_error_connecting_to_server_got_internet_connectivity">Ошибка подключения к серверу.  Есть ли подключение к интернет?</string>
+    <string name="CreateAccountActivity_register_with_redphone">Регистрация через RedPhone</string>
+    <string name="CreateAccountActivity_error_connecting_to_server_got_internet_connectivity">Ошибка подключения к серверу. Есть ли подключение к интернет?</string>
     <string name="CreateAccountActivity_account_created">Акаунт создан</string>
     <string name="CreateAccountActivity_error_creating_account">Ошибка создания акаунта</string>
     <string name="CreateAccountActivity_timeout_while_waiting_for_verification">Превышено время подтверждения</string>
@@ -53,14 +53,14 @@
     <string name="CreateAccountActivity_you_must_specify_your_phone_number">Вы должны указать свой номер телефона!</string>
     <string name="CreateAccountActivity_incorrect_number_format">Неверный формат номера</string>
     <string name="CreateAccountActivity_you_must_specify_your_number_in_international_format_eg_14151231234">Укажите номер вашего телефона в междунарожном формате (+14151231234)</string>
-    <string name="CreateAccountActivity_sorry_only_usa_numbers_are_supported_in_the_beta">Извините в Beta доступны только номера США.</string>
+    <string name="CreateAccountActivity_sorry_only_usa_numbers_are_supported_in_the_beta">Извините в Beta доступны только номера с США.</string>
     <string name="CreateAccountActivity_creating_account">Создание акаунта</string>
     <string name="CreateAccountActivity_this_could_take_a_moment">Это может занять пару минут...</string>
 
     <string name="ContactsListActivity_loading">Загрузка...</string>
     <string name="ContactsListActivity_no_contacts_found">Контакты не найдены.</string>    
     
-    <string name="NotificationBarManager_redphone_call_in_progress">RedPhone call in progress</string>
+    <string name="NotificationBarManager_redphone_call_in_progress">RedPhone вызов выполняется</string>
     <string name="NotificationBarManager_missed_redphone_call_from_s">Пропущен RedPhone вызов от %s</string>
     <string name="NotificationBarManager_missed_redphone_call">Пропущен RedPhone вызов</string>
     
@@ -78,15 +78,15 @@
         
     <string name="about_activity__additional_information">Доболнительная информация:</string>
     <string name="about_activity__attribution">Атрибуты:</string>
-    <string name="about_activity__aboutText">Please see whispersystems.org for additional information, or contact support@whispersystems.org with problems, questions, or comments.</string>
+    <string name="about_activity__aboutText">Посетите whispersystems.org для дополнительной информации или по e-mail support@whispersystems.org, для решения проблем, вопросов и комментариев.</string>
     <string name="about_activity__attributionText">RedPhone links to the SpanDSP library, which is licensed under the LGPL.\n\nRedPhone uses the SPEEX Codec, which is used under the Xiph.Org variant of the BSD license: © 2002-2003, Jean-Marc Valin/Xiph.Org Foundation\n\nRedistribution and use of the SPEEX library in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n\t* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\t* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\t* Neither the name of the Xiph.org Foundation nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nThe SPEEX library is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the foundation or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.\n\n\nSome sound samples are licensed under the Creative Commons Sampling Plus License: http://creativecommons.org/licenses/sampling+/1.0/\n\nBy acclivity (http://www.freesound.org/usersViewSingle.php?id=37876):\nShipsBell.wav (http://www.freesound.org/samplesViewSingle.php?id=32304)\n\nBy Splashdust (http://www.freesound.org/usersViewSingle.php?id=754949):\nnegativebeep.wav (http://www.freesound.org/samplesViewSingle.php?id=67454)\n\nBy Peter_Gross (http://www.freesound.org/usersViewSingle.php?id=33429):\nSonar_pings.ogg (http://www.freesound.org/samplesViewSingle.php?id=12677\n\nBy suonho: http://www.freesound.org/samplesViewSingle.php?id=58348: ambienta_soundtrack_moog_sweep\n\nBy Mike Koenig: Busy Signal</string>    
     
-    <string name="account_creation__this_devices_phone_number">This device\'s phone number:</string>
+    <string name="account_creation__this_devices_phone_number">Номер телефона этого устройства:</string>
     <string name="account_creation__register">Регистрация</string>
 
     <string name="contacts_list_content__search">Поиск</string>
 
-    <string name="outbound_chooser__you_ve_initiated_a_call_with_a_contact_who_also_uses_redphone_would_you_like_to_upgrade_this_to_a_redphone_call">You\'ve initiated a call with a contact who also uses RedPhone. Would you like to upgrade this to a RedPhone call?</string>
+    <string name="outbound_chooser__you_ve_initiated_a_call_with_a_contact_who_also_uses_redphone_would_you_like_to_upgrade_this_to_a_redphone_call">Вы совершили звонок контакут который также использует RedPhone. Хотите использовать соединение через RedPhone?</string>
     <string name="outbound_chooser__secure_call">Защищеный звонок</string>
     <string name="outbound_chooser__insecure_call">Обычный звонок</string>
     
@@ -98,12 +98,12 @@
     <string name="dialer_options_menu__about">About</string>
     <string name="dialer_options_menu__settings">Настройки</string>
     
-    <string name="array__google_push_notifications">Google push notifications</string>
-    <string name="array__sms_push_notifications">SMS push notifications</string>
+    <string name="array__google_push_notifications">Google push-уведомления</string>
+    <string name="array__sms_push_notifications">SMS push-уведмоления</string>
     <string name="array__auto_recommended">Ауто (рекомендуется)</string>
     
     <string name="preferences__general_settings">Настройки оснвные</string>
-    <string name="preferences__prompt_for_call_upgrade">Prompt for call upgrade</string>
+    <string name="preferences__prompt_for_call_upgrade">Предлагать совершить звонок через RedPhone</string>
     <string name="preferences__when_making_insecure_calls_prompt_for_upgrade_to_redphone_if_contact_is_redphone_enabled">When making insecure calls, prompt for upgrade to RedPhone if contact is RedPhone-enabled.</string>
     <string name="preferences__advanced_signaling_settings">Advanced: Signaling Settings</string>
     <string name="preferences__advanced_audio_settings">Advanced: Audio Settings</string>
